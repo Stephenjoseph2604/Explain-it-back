@@ -1,0 +1,5 @@
+@import "tailwindcss";
+
+::selection{
+    background: oklch(62.619% 0.23783 304.687 / 0.194);
+}
