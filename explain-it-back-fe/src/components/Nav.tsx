@@ -1,12 +1,14 @@
 // Nav.tsx
 import React, { useState } from "react"
 import { motion } from "framer-motion"
-import { Sparkles, Menu, X, CheckCircle2 } from "lucide-react"
+import { Sparkles, Menu, X } from "lucide-react"
+import { NavLink as RRNavLink } from "react-router-dom"
 
 // --- Types ---
 interface NavLinkProps {
-  href: string
+  to: string
   children: React.ReactNode
+  className?: (state: { isActive: boolean }) => string
 }
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -16,13 +18,19 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 // --- Reusable Components ---
-const NavLink = ({ href, children }: NavLinkProps) => (
-  <a
-    href={href}
-    className="text-sm font-medium text-slate-300 hover:text-white transition-colors duration-200"
+const NavLink = ({ to, children, className }: NavLinkProps) => (
+  <RRNavLink
+    to={to}
+    className={className || (({ isActive }) =>
+      `text-sm font-medium transition-colors duration-200 ${
+        isActive
+          ? "text-white"
+          : "text-slate-300 hover:text-white"
+      }`  
+    )}
   >
     {children}
-  </a>
+  </RRNavLink>
 )
 
 const Button = ({
@@ -33,7 +41,7 @@ const Button = ({
   ...props
 }: ButtonProps) => {
   const baseStyles =
-    "inline-flex items-center justify-center px-6 py-3 rounded-full font-medium transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-[#0F172A]"
+    "inline-flex items-center justify-center px-4 py-2 rounded-full font-medium text-sm transition-all duration-300 focus:outline-none focus:ring-1 focus:ring-offset-2 focus:ring-offset-[#0F172A]"
   const variants = {
     primary:
       "bg-gradient-to-r from-violet-600 to-purple-600 text-white hover:shadow-[0_0_20px_rgba(124,58,237,0.5)] hover:scale-105 border border-transparent",
@@ -41,19 +49,21 @@ const Button = ({
       "bg-white/5 backdrop-blur-sm border border-white/10 text-white hover:bg-white/10 hover:border-white/20",
     ghost: "text-slate-300 hover:text-white hover:bg-white/5",
   }
+
+  const { onClick, disabled, type } = props
+  const motionProps = { onClick, disabled, type }
+
   return (
-    <>
-    {/* <motion.button
+    <motion.button
       whileTap={{
         scale: 0.98,
       }}
       className={`${baseStyles} ${variants[variant]} ${className}`}
-      {...props}
+      {...motionProps}  
     >
       {children}
-      {icon && <span className="ml-2">{icon}</span>}
-    </motion.button> */}
-    </>
+      {icon && <span className="ml-1">{icon}</span>}
+    </motion.button>
   )
 }
 
@@ -69,22 +79,23 @@ export function Nav() {
             <div className="bg-gradient-to-br from-violet-500 to-purple-600 p-1.5 rounded-lg">
               <Sparkles className="w-5 h-5 text-white" />
             </div>
-            <span className="font-bold text-xl tracking-tight">Explain It Back</span>
+            <span className="font-bold text-xl text-purple-100 tracking-tight">
+              Explain It Back
+            </span>
           </div>
 
           {/* Desktop Nav */}
-          <div className="hidden md:flex items-center space-x-8">
-            <NavLink href="#features">Features</NavLink>
-            <NavLink href="#pricing">Pricing</NavLink>
-            <NavLink href="#about">About</NavLink>
-            <NavLink href="#blog">Blog</NavLink>
+          <div className="hidden md:flex items-center space-x-6">
+            <NavLink to="/#features">Features</NavLink>
+            <NavLink to="/pricing">Pricing</NavLink>
+            <NavLink to="/about">About</NavLink>
+            <NavLink to="/whats-next">What's Next</NavLink>
           </div>
 
-          {/* CTA */}
-          <div className="hidden md:flex items-center">
-            <Button variant="primary" className="px-5 py-2 text-sm">
-              Get Started
-            </Button>
+          {/* CTA + Auth Buttons */}
+          <div className="hidden md:flex items-center space-x-3">
+            <Button variant="ghost">Sign In</Button>
+            <Button variant="primary">Sign Up</Button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -116,28 +127,64 @@ export function Nav() {
           }}
           className="md:hidden bg-[#0F172A] border-b border-white/10"
         >
-          <div className="px-4 pt-2 pb-6 space-y-2">
-            <a
-              href="#"
-              className="block px-3 py-2 text-base font-medium text-slate-300 hover:text-white hover:bg-white/5 rounded-md"
+          <div className="px-4 pt-3 pb-5 space-y-3">
+            <NavLink
+              to="/features"
+              className={({ isActive }) =>
+                `block px-3 py-2 text-sm font-medium rounded-md ${
+                  isActive
+                    ? "text-white bg-white/10"
+                    : "text-slate-300 hover:text-white hover:bg-white/5"
+                }`
+              }
             >
               Features
-            </a>
-            <a
-              href="#"
-              className="block px-3 py-2 text-base font-medium text-slate-300 hover:text-white hover:bg-white/5 rounded-md"
+            </NavLink>
+            <NavLink
+              to="/pricing"
+              className={({ isActive }) =>
+                `block px-3 py-2 text-sm font-medium rounded-md ${
+                  isActive
+                    ? "text-white bg-white/10"
+                    : "text-slate-300 hover:text-white hover:bg-white/5"
+                }`
+              }
             >
               Pricing
-            </a>
-            <a
-              href="#"
-              className="block px-3 py-2 text-base font-medium text-slate-300 hover:text-white hover:bg-white/5 rounded-md"
+            </NavLink>
+            <NavLink
+              to="/about"
+              className={({ isActive }) =>
+                `block px-3 py-2 text-sm font-medium rounded-md ${
+                  isActive
+                    ? "text-white bg-white/10"
+                    : "text-slate-300 hover:text-white hover:bg-white/5"
+                }`
+              }
             >
               About
-            </a>
-            <Button variant="primary" className="w-full mt-4">
-              Get Started
-            </Button>
+            </NavLink>
+            <NavLink
+              to="/blog"
+              className={({ isActive }) =>
+                `block px-3 py-2 text-sm font-medium rounded-md ${
+                  isActive
+                    ? "text-white bg-white/10"
+                    : "text-slate-300 hover:text-white hover:bg-white/5"
+                }`
+              }
+            >
+              Blog
+            </NavLink>
+
+            <div className="pt-3 space-y-2 border-t border-white/10">
+              <Button variant="ghost" className="w-full">
+                Sign In
+              </Button>
+              <Button variant="primary" className="w-full">
+                Sign Up
+              </Button>
+            </div>
           </div>
         </motion.div>
       )}

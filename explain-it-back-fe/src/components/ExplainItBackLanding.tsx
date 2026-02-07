@@ -72,7 +72,7 @@ export function ExplainItBackLanding() {
     <div className="min-h-screen bg-[#0F172A] text-white overflow-x-hidden font-sans selection:bg-purple-500/30">
       <StarBackground />
 
-      <Nav />
+      {/* <Nav /> */}
 
       {/* Hero Section */}
       <main className="relative pt-32 pb-16 sm:pt-40 sm:pb-24 lg:pb-32 overflow-hidden">
