@@ -66,6 +66,9 @@ const StarBackground = () => {
     </div>
   )
 }
+ 
+
+
 
 export function ExplainItBackLanding() {
   return (
@@ -91,8 +94,7 @@ export function ExplainItBackLanding() {
               transition={{
                 duration: 0.6,
               }}
-              className="lg:col-span-6 text-center lg:text-left"
-            >
+              className="lg:col-span-6 text-center lg:text-left" >
               {/* Badge */}
               <div className="inline-flex items-center space-x-2 bg-white/5 border border-purple-500/30 rounded-full px-3 py-1 mb-8 backdrop-blur-sm shadow-[0_0_15px_rgba(139,92,246,0.15)]">
                 <Zap className="w-4 h-4 text-purple-400 fill-purple-400" />
