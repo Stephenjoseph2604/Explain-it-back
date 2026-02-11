@@ -3,7 +3,7 @@ import cors from "cors";
 const allowedOrigins = [
   "http://localhost:3000",      // local dev
   "http://localhost:5173",      // Vite
-  "https://yourdomain.com",     // production frontend
+  process.env.CLIENT_URL,     // production frontend
   "https://www.yourdomain.com",
 ];
 
