@@ -1,5 +1,5 @@
 // ProfilePage.tsx
-import React, { useState } from "react";
+import  { useState } from "react";
 import { motion } from "framer-motion";
 import {
   Sparkles,
@@ -7,13 +7,20 @@ import {
   ChevronDown,
   ChevronUp,
   User,
-  Mail,
   GraduationCap,
   Star,
 } from "lucide-react";
 
+interface User {
+  name: string;
+  email: string;
+  role: string;
+  joined: string;
+  plan?: string;
+  credits?: number;
+}
 // Mock user and analyzes (replace with your actual data / API)
-const user = {
+const user: User = {
   name: "Alex Johnson",
   email: "alex@example.com",
   role: "Student",

@@ -1,7 +1,6 @@
 // NotFoundPage.tsx
-import React from "react"
 import { motion } from "framer-motion"
-import { Sparkles, Zap, Star, Home, ArrowRight } from "lucide-react"
+import { Sparkles,  Home, ArrowRight } from "lucide-react"
 import { Link } from "react-router-dom"
 
 const NotFoundPage = () => {

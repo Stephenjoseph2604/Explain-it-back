@@ -1,8 +1,6 @@
 // ExplainItBackLanding.tsx
-import React from "react"
 import { motion } from "framer-motion"
 import { Sparkles, Zap, Play, ChevronRight, Star, CheckCircle2 } from "lucide-react"
-import { Nav } from "./Nav"
 
 const FloatingSphere = ({
   className,

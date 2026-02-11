@@ -1,14 +1,9 @@
-import React from "react";
-import { ExplainItBackLanding } from "./components/ExplainItBackLanding.tsx";
-import HowItWorksSection from "./components/HowItWorksSection.tsx";
-import ExplainBox from "./components/ExplainBox.tsx";
-import WhyThisHelpsStudents from "./components/WhyThisHelpsStudents.tsx";
-import Footer from "./components/Footer.tsx";
+
 import PricingPage from "./components/PricingPage.tsx";
 import AboutPage from "./components/AboutPage.tsx";
 import WhatsNextPage from "./components/WhatsNextPage.tsx";
 import { Route, Routes } from "react-router-dom";
-import { Nav } from "./components/Nav.tsx";
+
 import Common from "./components/Common.tsx";
 import Landing from "./components/Landing.tsx";
 import NotFoundPage from "./components/NotFoundPage.tsx";

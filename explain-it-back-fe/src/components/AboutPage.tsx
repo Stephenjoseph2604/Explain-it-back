@@ -1,5 +1,4 @@
 // AboutPage.tsx
-import React from "react";
 import { motion } from "framer-motion";
 import { Sparkles, BookOpen, Users, Lightbulb, Star } from "lucide-react";
 

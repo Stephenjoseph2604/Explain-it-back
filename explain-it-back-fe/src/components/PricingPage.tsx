@@ -1,7 +1,6 @@
 // PricingPage.tsx
-import React from "react"
 import { motion } from "framer-motion"
-import { Sparkles, Zap, CheckCircle2, Users, BookOpen, Star } from "lucide-react"
+import { Sparkles, Zap, CheckCircle2, Users, BookOpen } from "lucide-react"
 
 const PricingPage = () => {
   const plans = [

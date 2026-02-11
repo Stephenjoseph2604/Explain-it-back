@@ -1,6 +1,6 @@
-import React, { useState } from "react"
+import  { useState } from "react"
 import { motion } from "framer-motion"
-import { Sparkles, Zap, CheckCircle2, XCircle, Lightbulb, Play } from "lucide-react"
+import { Sparkles, CheckCircle2, XCircle, Lightbulb, Play } from "lucide-react"
 
 import { explainAPI } from "./api" // adjust path as needed
 

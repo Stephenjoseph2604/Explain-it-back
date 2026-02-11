@@ -1,7 +1,7 @@
 // WhatsNextPage.tsx
-import React, { useState } from "react"
+import  { useState } from "react"
 import { motion } from "framer-motion"
-import { Sparkles, Zap, BookOpen, Users, Calendar, CheckCircle2, ChevronRight } from "lucide-react"
+import { Sparkles, Calendar, CheckCircle2 } from "lucide-react"
 
 const WhatsNextPage = () => {
   const [hoveredPhase, setHoveredPhase] = useState<string | null>(null)

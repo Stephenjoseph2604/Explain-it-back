@@ -1,5 +1,4 @@
 // WhyThisHelpsStudents.tsx
-import React from "react"
 import { motion } from "framer-motion"
 import { Lightbulb, Brain, Users, CheckCircle2, BookOpen, Star } from "lucide-react"
 
